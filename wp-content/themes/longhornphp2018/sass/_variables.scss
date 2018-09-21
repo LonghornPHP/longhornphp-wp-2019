@@ -1,0 +1,38 @@
+$dark_blue: rgba(0, 38, 106, 1);
+$red: rgba(180, 31, 48, 1);
+$white: rgba(255, 255, 255, 1);
+$light_blue: rgba(139, 214, 253, 1);
+$main_grey: rgba(201, 201, 201, 1);
+
+@mixin button {
+    display: inline-block;
+    font-weight: $btn-font-weight;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    border: $input-btn-border-width solid transparent;
+    @include button-size($input-btn-padding-y, $input-btn-padding-x, $font-size-base, $input-btn-line-height, $btn-border-radius);
+    @include transition($btn-transition);
+
+    // Share hover and focus styles
+    @include hover-focus {
+        text-decoration: none;
+    }
+
+    &:focus, &.focus {
+        outline: 0;
+        box-shadow: $btn-focus-box-shadow;
+    }
+
+    // Disabled comes first so active can properly restyle
+    &.disabled, &:disabled {
+        opacity: .65;
+        @include box-shadow(none);
+    }
+
+    &:active, &.active {
+        background-image: none;
+        @include box-shadow($btn-focus-box-shadow, $btn-active-box-shadow);
+    }
+}
