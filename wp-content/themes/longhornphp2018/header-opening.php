@@ -6,13 +6,14 @@
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 
-<link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png?v=juPH7Puthev2">
-<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png?v=juPH7Puthev2">
-<link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png?v=juPH7Puthev2">
-<link rel="manifest" href="/icons/manifest.json?v=juPH7Puthev2">
-<link rel="mask-icon" href="/icons/safari-pinned-tab.svg?v=juPH7Puthev2" color="#00266a">
-<link rel="shortcut icon" href="/icons/favicon.ico?v=juPH7Puthev2">
-<meta name="msapplication-config" content="/icons/browserconfig.xml?v=juPH7Puthev2">
+<link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png?v=kP3MPbkxMB">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png?v=kP3MPbkxMB">
+<link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png?v=kP3MPbkxMB">
+<link rel="manifest" href="/icons/site.webmanifest?v=kP3MPbkxMB">
+<link rel="mask-icon" href="/icons/safari-pinned-tab.svg?v=kP3MPbkxMB" color="#4f5b93">
+<link rel="shortcut icon" href="/icons/favicon.ico?v=kP3MPbkxMB">
+<meta name="msapplication-TileColor" content="#4f5b93">
+<meta name="msapplication-config" content="/icons/browserconfig.xml?v=kP3MPbkxMB">
 <meta name="theme-color" content="#ffffff">
 
 <!-- deploy test -->
