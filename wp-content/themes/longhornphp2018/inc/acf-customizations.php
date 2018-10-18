@@ -56,3 +56,25 @@ function speaker_session_relationship( $value, $post_id, $field  ) {
 }
 
 add_filter('acf/update_value/name=speaker_session_relationship', 'speaker_session_relationship', 10, 3);
+
+add_action('acf/init', 'lphp_register_about_organizers_block');
+function lphp_register_about_organizers_block() {
+	if( function_exists('acf_register_block') ) {
+		acf_register_block([
+			'name'				=> 'organizers_gallery',
+			'title'				=> 'Organizers Gallery',
+			'description'		=> 'A gallery of conference organizers with names and images.',
+			'render_callback'	=> 'lphp_render_organizers_gallery',
+			'category'			=> 'formatting',
+			'icon'				=> 'format-gallery',
+			'keywords'			=> ['organizers', 'gallery'],
+		]);
+	}
+}
+
+function lphp_render_organizers_gallery($block) {
+	// include a template part from within the "template-parts/block" folder
+	if( file_exists(STYLESHEETPATH . "/template-parts/blocks/organizers-gallery.php") ) {
+		include STYLESHEETPATH . "/template-parts/blocks/organizers-gallery.php";
+	}
+}

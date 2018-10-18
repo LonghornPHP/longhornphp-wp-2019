@@ -1,0 +1,137 @@
+/*--------------------------------------------------------------------------------------------
+*
+*	Gutenberg
+*
+*--------------------------------------------------------------------------------------------*/
+
+#editor {
+	
+	.edit-post-visual-editor {
+		flex-basis: 0%;
+	}
+	
+	// metaboxes
+	.edit-post-layout__metaboxes {
+		background: transparent;
+		border-top: 0 none;
+		flex-grow: 1;
+		flex-basis: 0%;
+		margin-top: 0;
+		padding: 46px;
+		
+		.edit-post-meta-boxes-area {
+			margin: 0 auto;
+			max-width: 1070px;
+		}
+		
+		&:empty {
+			display: none;
+		};
+	}
+	
+	// postbox
+	.postbox {
+		border: #e2e4e7 solid 1px;
+		border-bottom: none;
+		margin: 20px 0;
+		
+		input {
+			max-width: none;
+		}
+		
+		.acf-block-fields {
+			border: #e2e4e7 solid 1px;
+		}
+	}
+	
+/*
+	// style2 (grey bg)
+	.edit-post-layout__metaboxes {
+		flex-grow: 0;
+		margin-top: 46px;
+		padding: 20px;
+	}
+	
+	.edit-post-layout__metaboxes {
+		background: #f1f1f1;
+		border-top: 1px solid #e2e4e7;
+	}
+*/
+
+	
+	
+	// fields
+	div.acf-field {
+		padding: 16px 20px;
+	}
+	
+	// acf-input-wrap
+	.acf-input-prepend,
+	.acf-input-append {
+		box-sizing: border-box;
+		height: 28px;
+	}
+	
+	// accordion
+	.acf-field.acf-accordion {
+		padding: 0 !important;
+		
+		.acf-accordion-title {
+			padding: 16px 20px !important;
+		}
+	}
+	
+	// table
+	.acf-table {
+		box-sizing: border-box;
+		
+		.acf-row-handle {
+			width: 32px;
+		}
+	}
+}
+
+// acf-block
+.acf-block {
+	
+}
+
+// block body
+.acf-block-body {
+	
+	.acf-block-fields {
+		border: #e2e4e7 solid 1px;
+	}
+}
+
+// block panel
+.acf-block-panel {
+	
+	// panel actions
+	.acf-block-panel-actions {
+		margin: 16px -16px;
+		padding: 0 16px;
+		
+		button {
+			padding: 0 12px 2px;
+			font-size: 13px;
+			margin: 2px;
+			height: 33px;
+			line-height: 32px;
+			width: 100%;
+		}
+	}
+	
+	// fields
+	.acf-block-fields {
+		border: none;
+		border-top: #e2e4e7 solid 1px;
+		margin: 0 -16px;
+		padding: 0;
+	}
+}
+
+// hide is-loading
+.acf-block-fields.is-loading {
+	display: none;
+}

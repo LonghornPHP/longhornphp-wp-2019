@@ -1,0 +1,78 @@
+/*--------------------------------------------------------------------------------------------
+*
+*	Gutenberg
+*
+*--------------------------------------------------------------------------------------------*/
+#editor {
+  /*
+	// style2 (grey bg)
+	.edit-post-layout__metaboxes {
+		flex-grow: 0;
+		margin-top: 46px;
+		padding: 20px;
+	}
+	
+	.edit-post-layout__metaboxes {
+		background: #f1f1f1;
+		border-top: 1px solid #e2e4e7;
+	}
+*/ }
+  #editor .edit-post-visual-editor {
+    flex-basis: 0%; }
+  #editor .edit-post-layout__metaboxes {
+    background: transparent;
+    border-top: 0 none;
+    flex-grow: 1;
+    flex-basis: 0%;
+    margin-top: 0;
+    padding: 46px; }
+    #editor .edit-post-layout__metaboxes .edit-post-meta-boxes-area {
+      margin: 0 auto;
+      max-width: 1070px; }
+    #editor .edit-post-layout__metaboxes:empty {
+      display: none; }
+  #editor .postbox {
+    border: #e2e4e7 solid 1px;
+    border-bottom: none;
+    margin: 20px 0; }
+    #editor .postbox input {
+      max-width: none; }
+    #editor .postbox .acf-block-fields {
+      border: #e2e4e7 solid 1px; }
+  #editor div.acf-field {
+    padding: 16px 20px; }
+  #editor .acf-input-prepend,
+  #editor .acf-input-append {
+    box-sizing: border-box;
+    height: 28px; }
+  #editor .acf-field.acf-accordion {
+    padding: 0 !important; }
+    #editor .acf-field.acf-accordion .acf-accordion-title {
+      padding: 16px 20px !important; }
+  #editor .acf-table {
+    box-sizing: border-box; }
+    #editor .acf-table .acf-row-handle {
+      width: 32px; }
+
+.acf-block-body .acf-block-fields {
+  border: #e2e4e7 solid 1px; }
+
+.acf-block-panel .acf-block-panel-actions {
+  margin: 16px -16px;
+  padding: 0 16px; }
+  .acf-block-panel .acf-block-panel-actions button {
+    padding: 0 12px 2px;
+    font-size: 13px;
+    margin: 2px;
+    height: 33px;
+    line-height: 32px;
+    width: 100%; }
+
+.acf-block-panel .acf-block-fields {
+  border: none;
+  border-top: #e2e4e7 solid 1px;
+  margin: 0 -16px;
+  padding: 0; }
+
+.acf-block-fields.is-loading {
+  display: none; }

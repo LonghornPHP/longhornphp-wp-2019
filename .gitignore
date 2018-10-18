@@ -105,4 +105,13 @@ wp-content/mysql.sql
 *.asf
 *.wmv
 *.avi
-wp-content/plugins
+wp-content/plugins/duplicate-post
+wp-content/plugins/disable-emojis
+wp-content/plugins/disable-embeds
+wp-content/plugins/wp-all-export
+wp-content/plugins/cloudflare
+wp-content/plugins/tiny-compress-images
+wp-content/plugins/pretty-link
+wp-content/plugins/wordpress-seo
+wp-content/plugins/gutenberg
+wp-content/plugins/wp-super-cache
