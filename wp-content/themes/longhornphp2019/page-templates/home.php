@@ -92,7 +92,7 @@ get_header();
 
 <div
 	class="section-about lazy"
-	data-src="<?php echo wp_get_attachment_image_url( get_field('home_description_image'), 'large' ); ?>"
+	data-src="<?php echo wp_get_attachment_image_url( get_field('home_description_image'), 'large' ); ?>">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-10 col-lg-8 mx-auto text-center">
