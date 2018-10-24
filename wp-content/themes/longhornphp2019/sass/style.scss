@@ -18,7 +18,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 body {
     font-family: 'Open Sans', sans-serif;
-    color: $dark_blue;
+    color: $theme_dark;
 }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
@@ -43,12 +43,12 @@ img.aligncenter {
 
 .btn-default {
     background: #FFFFFF;
-    color: $dark_blue;
-    border-color: $dark_blue;
+    color: $theme_base;
+    border-color: $theme_base;
     transition: .3s all ease;
 
     &:hover, &:focus {
-        background: mix(white, $dark_blue, 90);
+        background: mix(white, $theme_dark, 90);
     }
 }
 
@@ -72,11 +72,11 @@ img.aligncenter {
 }
 
 .site-header .navbar {
-    background: $red;
+    background: $wheel4;
 
     .navbar-nav {
         .nav-link {
-            color: #FFFFFF;
+            color: $theme_dark;
             position: relative;
 
             &.dropdown-toggle:after {
@@ -102,16 +102,16 @@ img.aligncenter {
 
         .dropdown-menu {
             border-radius: 0;
-            border-color: mix(black, $light_blue, 10);
-            background-color: $light_blue;
+            border-color: mix($theme_dark, $wheel4, 20);
+            background-color: $wheel4;
             box-shadow: none;
             background-clip: border-box;
 
             .dropdown-item {
-                color: $dark_blue;
+                color: $theme_dark;
 
                 &:hover, &:focus {
-                    background-color: mix(black, $light_blue, 10);
+                    background-color: mix($theme_dark, $wheel4, 20);
                 }
             }
 
@@ -121,7 +121,7 @@ img.aligncenter {
                 // padding-left: 20px;
 
                 .dropdown-item {
-                    color: #FFFFFF;
+                    color: $theme_dark;
                 }
             }
         }
@@ -138,7 +138,7 @@ img.aligncenter {
             .nav-link:hover,
             .nav-link:focus {
                 &:not(.dropdown-toggle):after {
-                    background: #FFFFFF;
+                    background: $theme_dark;
                 }
             }
         }
@@ -147,7 +147,7 @@ img.aligncenter {
 
 @include media-breakpoint-down(sm) {
     .site-header .pushy {
-        background-color: $dark_blue;
+        background-color: $theme_dark;
         padding-top: 20px;
         text-align: center;
         padding: 0 30px;
@@ -217,12 +217,12 @@ img.aligncenter {
         a {
             @include button();
             background: #FFFFFF;
-            color: $dark_blue;
-            border-color: $dark_blue;
+            color: $theme_dark;
+            border-color: $theme_dark;
             transition: .3s all ease;
 
             &:hover, &:focus {
-                background: mix(white, $dark_blue, 90);
+                background: mix(white, $theme_dark, 90);
             }
         }
     }
@@ -258,7 +258,7 @@ img.aligncenter {
 
     #mc-embedded-subscribe {
         background-color: #FFFFFF;
-        color: $dark_blue;
+        color: $theme_dark;
         margin-left: 5px;
         line-height: 30px;
 
@@ -267,7 +267,7 @@ img.aligncenter {
         }
 
         &:hover {
-            background: mix(white, $dark_blue, 90);
+            background: mix(white, $theme_dark, 90);
         }
     }
 
@@ -281,7 +281,7 @@ img.aligncenter {
     padding-top: 60px;
     padding-bottom: 60px;
     background-size: 125px 119.5px;
-    color: $dark_blue;
+    color: $theme_dark;
 
     h2 {
         margin-bottom: 30px;
@@ -297,7 +297,7 @@ img.aligncenter {
     padding-bottom: 60px;
 
     h2 {
-        color: $red;
+        // color: $theme_bright;
         margin-bottom: 20px;
     }
 }
@@ -332,7 +332,7 @@ img.aligncenter {
 .page .entry-title {
     margin-bottom: 20px;
     padding-bottom: 20px;
-    border-bottom: 1px solid transparentize($dark_blue, 0.5);
+    border-bottom: 1px solid transparentize($theme_dark, 0.5);
 }
 
 .sponsorship-tier {
@@ -354,7 +354,7 @@ img.aligncenter {
 
     a {
         display: block;
-        color: $dark_blue;
+        color: $theme_dark;
 
         &:hover {
             text-decoration: none;
@@ -403,7 +403,7 @@ img.aligncenter {
     padding-top: 40px;
     padding-bottom: 40px;
     color: #FFFFFF;
-    background-color: $dark_blue;
+    background-color: $theme_dark;
     text-align: center;
 
     a {
@@ -448,10 +448,10 @@ img.aligncenter {
     }
 
     .twitter-link {
-        color: $red;
+        color: $theme_bright;
 
         a {
-            color: $red;
+            color: $theme_bright;
         }
     }
 }
@@ -581,17 +581,17 @@ img.aligncenter {
         }
 
         &.entry {
-            background-color: transparentize($red, .67);
+            background-color: transparentize($theme_bright, .67);
             color: #FFFFFF;
         }
 
         &.intermediate {
-            background-color: transparentize($red, .33);
+            background-color: transparentize($theme_bright, .33);
             color: #FFFFFF;
         }
 
         &.advanced {
-            background-color: transparentize($red, 0);
+            background-color: transparentize($theme_bright, 0);
             color: #FFFFFF;
         }
     }

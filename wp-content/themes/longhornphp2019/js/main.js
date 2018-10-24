@@ -33,14 +33,13 @@ jQuery(document).ready(function($){
         $('.page-template-venue').scrollspy({ target: '#venue-nav', offset: 50 });
     }
 
-    $('.lazy').lazy({
+    $('.lazy').Lazy({
         combined: true,
         // delay: 5000,
 
         titoLazyLoader: function(element) {
             if (typeof TitoWidget !== 'undefined') {
                 TitoWidget.buildWidgets();
-                element.load();
             }
         },
     });

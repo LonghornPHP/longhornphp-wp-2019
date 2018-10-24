@@ -4,6 +4,16 @@ $white: rgba(255, 255, 255, 1);
 $light_blue: rgba(139, 214, 253, 1);
 $main_grey: rgba(201, 201, 201, 1);
 
+// https://color.adobe.com/create/color-wheel/?base=2&rule=Monochromatic&selected=4&name=My%20Color%20Theme&mode=rgb&rgbvalues=0.4710284113645459,0.5425770308123521,0.8764705882352941,0.5418567426970787,0.5604218157851446,0.6470588235294117,0.30980392156862746,0.3568627450980392,0.5764705882352941,0.733969587835134,0.7591168231998777,0.8764705882352941,0.20232092837134846,0.23305322128852696,0.37647058823529395&swatchOrder=0,1,2,3,4
+$wheel1: rgb(120, 138, 223);
+$wheel2: rgb(138, 143, 165);
+$wheel3: rgb(79, 91, 147);
+$wheel4: rgb(187, 194, 223);
+$wheel5: rgb(52, 59, 96);
+$theme_bright: $wheel1;
+$theme_base: $wheel3;
+$theme_dark: $wheel5;
+
 @mixin button {
     display: inline-block;
     font-weight: $btn-font-weight;

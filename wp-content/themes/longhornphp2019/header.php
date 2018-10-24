@@ -1,7 +1,7 @@
 <?php get_header( 'opening' ); ?>
 
 <header class="site-header" role="banner">
-	<nav class="navbar navbar-expand-md navbar-dark">
+	<nav class="navbar navbar-expand-md navbar-light">
 		<?php $logo = get_field('header_logo', 'options'); ?>
 		<?php if ($logo) : ?>
 			<a class="navbar-brand logo-wrap" href="/">
