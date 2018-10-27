@@ -76,7 +76,7 @@ img.aligncenter {
 
     .navbar-nav {
         .nav-link {
-            color: $theme_dark;
+            color: #FFFFFF;
             position: relative;
 
             &.dropdown-toggle:after {
@@ -86,6 +86,8 @@ img.aligncenter {
             }
 
             @include media-breakpoint-up(md) {
+                color: $theme_dark;
+
                 &:not(.dropdown-toggle):after {
                     content: "";
                     display: block;
@@ -121,7 +123,7 @@ img.aligncenter {
                 // padding-left: 20px;
 
                 .dropdown-item {
-                    color: $theme_dark;
+                    color: #FFFFFF;
                 }
             }
         }
