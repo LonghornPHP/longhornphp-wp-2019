@@ -86,6 +86,7 @@ function lphp_speaker_type() {
         'show_in_nav_menus'          => true,
         'show_tagcloud'              => true,
         'rewrite'                    => false,
+        'show_in_rest'               => true,
     );
     register_taxonomy( 'speaker_type', array( 'speaker' ), $args );
 
