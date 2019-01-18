@@ -8,8 +8,8 @@ function speaker_session_relationship( $post_id, $talk, $update ) {
 
 		$wpdb->delete(
 			$wpdb->prefix . 'sessions',
-			['speaker_id' => $speaker->ID, 'talk_id' => $talk->ID],
-			['%d', '%d']
+			['talk_id' => $talk->ID],
+			['%d']
 		);
 
 		if ($speaker) {
