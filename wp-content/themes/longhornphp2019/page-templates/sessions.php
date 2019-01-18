@@ -19,7 +19,7 @@ get_header();
                         <div class="entry-content">
                             <?php the_content(); ?>
                         </div>
-                        <div class="legend">
+                        <!-- <div class="legend">
                             <span class="session-level badge badge-pill badge-light entry">
                                 <i class="fas fa-star"></i>
                             </span>
@@ -33,7 +33,7 @@ get_header();
                                 <i class="fas fa-star"></i>
                             </span>
                             - Entry, Intermediate, Advanced
-                        </div>
+                        </div> -->
                     </article>
 
                 <?php endwhile;
