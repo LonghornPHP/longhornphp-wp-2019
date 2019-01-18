@@ -291,13 +291,6 @@ function lphp_add_gallery_classes( $output ) {
 	return $output;
 }
 
-add_filter( 'lphp_post_content', 'wptexturize' );
-add_filter( 'lphp_post_content', 'convert_smilies' );
-add_filter( 'lphp_post_content', 'convert_chars' );
-add_filter( 'lphp_post_content', 'wpautop' );
-add_filter( 'lphp_post_content', 'shortcode_unautop' );
-add_filter( 'lphp_post_content', 'do_shortcode' );
-
 function lphp_get_stars_for_level($level) {
 	$html = '';
 	$counts = ['entry' => 1, 'intermediate' => 2, 'advanced' => 3];
