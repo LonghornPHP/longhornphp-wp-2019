@@ -434,7 +434,7 @@ img.aligncenter {
     }
 
     @include media-breakpoint-up(lg) {
-        .gallery-item {
+        &.gallery-columns-5 .gallery-item {
             margin-right: 0;
         }
     }

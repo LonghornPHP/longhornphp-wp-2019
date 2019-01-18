@@ -288,6 +288,7 @@ function lphp_add_image_sizes() {
 add_filter( 'gallery_style', 'lphp_add_gallery_classes');
 function lphp_add_gallery_classes( $output ) {
 	$output = str_replace('gallery-columns-5', 'gallery-columns-5 d-flex justify-content-start justify-content-lg-between flex-wrap', $output);
+	$output = str_replace('gallery-columns-2', 'gallery-columns-2 d-flex justify-content-start justify-content-lg-center flex-wrap', $output);
 	return $output;
 }
 
