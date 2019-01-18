@@ -25,84 +25,41 @@ get_header();
 
             endif; ?>
 
-            <?php foreach (['thursday', 'friday', 'saturday'] as $day) : ?>
-                <?php $rooms = get_field($day . '_schedule_room_names', 'options'); ?>
+            <div class="day-schedule">
+                <div class="day-intro">
+                    <h2>Thursday, May 2nd</h2>
+                    <p><strong>Tutorial Day</strong></p>
+                </div>
+                <?php
+                    $slots = get_slots('2019-05-02');
+                    $rooms = ['Bevo', 'Longhorn', 'Stadium'];
+                ?>
+                <?php include get_template_directory() . '/template-parts/schedule-table.php'; ?>
+            </div>
 
-                <?php if (have_rows($day . '_schedule_sessions', 'options')) : ?>
+            <div class="day-schedule">
+                <div class="day-intro">
+                    <h2>Friday, May 3rd</h2>
+                    <p><strong>Main Conference – Day 1</strong></p>
+                </div>
+                <?php
+                    $slots = get_slots('2019-05-03');
+                    $rooms = ['Foxy', 'Balcones', 'Stadium'];
+                ?>
+                <?php include get_template_directory() . '/template-parts/schedule-table.php'; ?>
+            </div>
 
-                    <div class="day-schedule">
-                        <div class="day-intro">
-                            <?php the_field($day . '_schedule_intro', 'options'); ?>
-                        </div>
-
-                        <div class="table-responsive-md">
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th rowspan="2" class="start-end align-middle">Start / End</th>
-                                    <th style="text-align: center;" colspan="<?php echo count($rooms); ?>">
-                                    Room Name</th>
-                                </tr>
-                                <tr>
-                                    <?php foreach ($rooms as $room) : ?>
-                                        <th>
-                                            <?php echo esc_html( $room['room_name'] ); ?>
-                                        </th>
-                                    <?php endforeach; ?>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php while (have_rows($day . '_schedule_sessions', 'options')) : the_row(); ?>
-                                    <tr>
-                                        <td class="start-end">
-                                            <?php the_sub_field('start_time'); ?><br>
-                                            <?php the_sub_field('end_time'); ?>
-                                        </td>
-                                        <?php if (have_rows('tracks')) : ?>
-                                            <?php while (have_rows('tracks')) : the_row(); ?>
-                                                <?php if (get_sub_field('event_type') === 'Custom') : ?>
-                                                    <td
-                                                        <?php if (get_sub_field('fills_block')) : ?>
-                                                            colspan="<?php echo count($rooms); ?>"
-                                                            align="center"
-                                                            style="vertical-align: middle;"
-                                                        <?php endif; ?>
-                                                        >
-                                                        <?php the_sub_field('event_name'); ?>
-                                                    </td>
-                                                <?php else : ?>
-                                                    <?php $session = get_sub_field('session'); ?>
-                                                    <td
-                                                        <?php if (get_sub_field('fills_block')) : ?>
-                                                            colspan="<?php echo count($rooms); ?>"
-                                                            align="center"
-                                                            style="vertical-align: middle;"
-                                                        <?php endif; ?>
-                                                        >
-                                                        <a href="<?php the_field('sessions_page', 'options'); ?>#<?php echo esc_attr( $session->post_name ); ?>">
-                                                            <?php echo esc_html($session->post_title); ?>
-                                                        </a>
-                                                        <?php $speakers = get_field('speaker_session_relationship', $session->ID); ?>
-                                                        <?php if (!empty($speakers)) : ?>
-                                                            <br>
-                                                            <?php $speakers = array_values($speakers); ?>
-                                                            <small>by <a href="<?php the_field('speakers_page', 'options'); ?>#<?php echo esc_attr( $speakers[0]->post_name ); ?>">
-                                                                <?php echo esc_html($speakers[0]->post_title); ?>
-                                                            </a></small>
-                                                        <?php endif; ?>
-                                                    </td>
-                                                <?php endif; ?>
-                                            <?php endwhile; ?>
-                                        <?php endif; ?>
-                                    </tr>
-                                <?php endwhile; ?>
-                            </tbody>
-                        </table>
-                        </div>
-                    </div><!-- day-schedule -->
-                <?php endif; ?>
-
-            <?php endforeach; ?>
+            <div class="day-schedule">
+                <div class="day-intro">
+                    <h2>Saturday, May 4th</h2>
+                    <p><strong>Main Conference – Day 2</strong></p>
+                </div>
+                <?php
+                    $slots = get_slots('2019-05-04');
+                    $rooms = ['Foxy', 'Balcones', 'Stadium'];
+                ?>
+                <?php include get_template_directory() . '/template-parts/schedule-table.php'; ?>
+            </div>
 
             <div class="section-register">
                 <div class="container">

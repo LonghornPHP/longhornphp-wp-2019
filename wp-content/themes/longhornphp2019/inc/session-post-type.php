@@ -87,6 +87,7 @@ function lphp_session_type() {
         'show_in_nav_menus'          => true,
         'show_tagcloud'              => true,
         'rewrite'                    => false,
+        'show_in_rest'               => true,
     );
     register_taxonomy( 'session_type', array( 'session' ), $args );
 
@@ -125,6 +126,7 @@ function lphp_session_level() {
         'show_in_nav_menus'          => true,
         'show_tagcloud'              => true,
         'rewrite'                    => false,
+        'show_in_rest'               => true,
     );
     register_taxonomy( 'session_level', array( 'session' ), $args );
 

@@ -1,0 +1,59 @@
+<div class="table-responsive-md">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th class="start-end align-middle" rowspan="2">Start / End</th>
+                <th colspan="3" style="text-align: center;">Room Name</th>
+            </tr>
+            <tr>
+                <?php foreach ($rooms as $room) : ?>
+                    <th><?php echo $room; ?></th>
+                <?php endforeach; ?>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($slots as $slot) : ?>
+                <tr>
+                    <td class="start-end">
+                        <?php the_field('start', $slot->ID); ?><br>
+                        <?php the_field('end', $slot->ID); ?>
+                    </td>
+
+                    <?php if (get_field('session_type', $slot->ID) === 'Other') : ?>
+                        <td align="center" colspan="3" style="vertical-align: middle;">
+                            <p><?php the_field('label', $slot->ID); ?></p>
+                        </td>
+                    <?php endif; ?>
+
+                    <?php if (get_field('session_type', $slot->ID) === 'Talks') : ?>
+                        <?php $sessions = fill_sessions_with_speakers(get_field('session', $slot->ID)); ?>
+                        <?php foreach ($sessions as $session) : ?>
+                            <td>
+                                <a href="/sessions/#<?php echo $session->post_name; ?>">
+                                    <?php echo $session->post_title; ?>
+                                </a><br>
+                                <small>by <a href="/lineup/#<?php echo $session->speakers[0]->post_name; ?>">
+                                    <?php echo $session->speakers[0]->post_title; ?></a>
+                                </small>
+                            </td>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+
+
+
+                    <?php if (get_field('session_type', $slot->ID) === 'Talk') : ?>
+                        <?php $session = fill_sessions_with_speakers(get_field('session', $slot->ID))[0]; ?>
+                        <td colspan="3">
+                            <a href="/sessions/#<?php echo $session->post_name; ?>">
+                                <?php echo $session->post_title; ?>
+                            </a><br>
+                            <small>by <a href="/lineup/#<?php echo $session->speakers[0]->post_name; ?>">
+                                <?php echo $session->speakers[0]->post_title; ?></a>
+                            </small>
+                        </td>
+                    <?php endif; ?>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>

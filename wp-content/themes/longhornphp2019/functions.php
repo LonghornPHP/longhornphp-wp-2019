@@ -32,15 +32,22 @@ function base_theme_content_width() {
 }
 add_action( 'after_setup_theme', 'base_theme_content_width', 0 );
 
-function get_speakers_by_type($types = []) {
+function get_speakers_by_type($types = [], $ids = []) {
 	$args = [
 		'post_type' => 'speaker',
 		'posts_per_page' => -1,
 		'post_status' => 'publish',
 		'order' => 'ASC',
 		'orderby' => 'title',
-		'tax_query' => ['relation' => 'OR'],
 	];
+
+	if (count($ids)) {
+		$args['post_id__in'] = $ids;
+	}
+
+	if (count($types)) {
+		$args['tax_query'] = ['relation' => 'OR'];
+	}
 
 	foreach ( $types as $type ) {
 		$args['tax_query'][] = [
@@ -56,42 +63,38 @@ function get_speakers_by_type($types = []) {
 function fill_speakers_with_talks($speakers) {
 	global $wpdb;
 
-	// First, get the session IDs associated with the speakers
-	$speaker_ids = array_map(function($speaker) {
+	$speaker_ids = array_map(function ($speaker) {
 		return $speaker->ID;
 	}, $speakers);
 
-	$query = 'SELECT post_id, meta_value from ' . $wpdb->prefix . 'postmeta ';
-	$query .= 'WHERE meta_key = "speaker_session_relationship" ';
-	$query .= 'AND meta_value != ""';
-	$query .= 'AND post_id IN (' . implode(', ', array_fill(0, count($speaker_ids), '%d')) . ')';
-	$results = $wpdb->get_results( $wpdb->prepare($query, $speaker_ids), ARRAY_A );
-	$session_ids = [];
-	foreach ($results as $result) {
-		$session_ids[$result['post_id']] = unserialize($result['meta_value']);
-	}
-	$flattened_session_ids = empty($session_ids) ? [] : call_user_func_array('array_merge', $session_ids);
+	// https://stackoverflow.com/questions/10634058/issue-when-trying-to-use-in-in-wpdb
+	$id_placeholders = array_fill(0, count($speaker_ids), '%d');
+	$id_placeholders = implode(',', $id_placeholders);
+	// => "%d,%d,%d"
 
-	$sessions = get_posts([
-		'post_type' => 'session',
-		'posts_per_page' => -1,
-		'post__in' => $flattened_session_ids,
-		'post_status' => 'publish',
-	]);
+	$speaker_sessions = $wpdb->get_results($wpdb->prepare(
+		"SELECT speaker_id, talk_id from {$wpdb->prefix}sessions
+		WHERE speaker_id IN({$id_placeholders})",
+		$speaker_ids
+	), OBJECT);
+
+	$sessions = get_sessions_by_type([], array_map(function ($speaker_session) {
+		return $speaker_session->talk_id;
+	}, $speaker_sessions));
+
+	foreach ($speaker_sessions as $speaker_session) {
+		foreach ($sessions as $session) {
+			if ((int)$speaker_session->talk_id === $session->ID) {
+				$speaker_session->session = $session;
+			}
+		}
+	}
 
 	foreach ($speakers as $speaker) {
-		$speaker->sessions = [];
-	}
-
-	foreach ($session_ids as $speaker_id => $speaker_session_ids) {
-		foreach ($speakers as $speaker) {
-			if ($speaker->ID === $speaker_id) {
-				$speaker->sessions = array_filter($sessions, function($session) use ($speaker_session_ids) {
-					if (in_array($session->ID, $speaker_session_ids)) {
-						return true;
-					}
-				});
-				break;
+		$speaker->sessions = $speaker->sessions ?? [];
+		foreach ($speaker_sessions as $speaker_session) {
+			if ((int)$speaker_session->speaker_id === $speaker->ID) {
+				$speaker->sessions[] = $speaker_session->session;
 			}
 		}
 	}
@@ -99,15 +102,22 @@ function fill_speakers_with_talks($speakers) {
 	return $speakers;
 }
 
-function get_sessions_by_type($types = []) {
+function get_sessions_by_type($types = [], $ids = []) {
 	$args = [
 		'post_type' => 'session',
 		'posts_per_page' => -1,
 		'post_status' => 'publish',
 		'order' => 'ASC',
 		'orderby' => 'title',
-		'tax_query' => ['relation' => 'OR'],
 	];
+
+	if (count($ids)) {
+		$args['post_id__in'] = $ids;
+	}
+
+	if (count($types)) {
+		$args['tax_query'] = ['relation' => 'OR'];
+	}
 
 	foreach ( $types as $type ) {
 		$args['tax_query'][] = [
@@ -121,53 +131,45 @@ function get_sessions_by_type($types = []) {
 }
 
 function fill_sessions_with_speakers($sessions) {
-	if (!$sessions) {
-		return $sessions;
-	}
+    global $wpdb;
 
-	global $wpdb;
+    $session_ids = array_map(function ($session) {
+        return $session->ID;
+    }, $sessions);
 
-	// First, get the speaker IDs associated with the sessions
-	$session_ids = array_map(function($session) {
-		return $session->ID;
-	}, $sessions);
+    // https://stackoverflow.com/questions/10634058/issue-when-trying-to-use-in-in-wpdb
+    $id_placeholders = array_fill(0, count($session_ids), '%d');
+    $id_placeholders = implode(',', $id_placeholders);
+    // => "%d,%d,%d"
 
-	$query = 'SELECT post_id, meta_value from ' . $wpdb->prefix . 'postmeta ';
-	$query .= 'WHERE meta_key = "speaker_session_relationship" ';
-	$query .= 'AND meta_value != ""';
-	$query .= 'AND post_id IN (' . implode(', ', array_fill(0, count($session_ids), '%d')) . ')';
-	$results = $wpdb->get_results( $wpdb->prepare($query, $session_ids), ARRAY_A );
-	$speaker_ids = [];
-	foreach ($results as $result) {
-		$speaker_ids[$result['post_id']] = unserialize($result['meta_value']);
-	}
-	$flattened_speaker_ids = empty($speaker_ids) ? [] : call_user_func_array('array_merge', $speaker_ids);
+    $session_speakers = $wpdb->get_results($wpdb->prepare(
+        "SELECT talk_id, speaker_id from {$wpdb->prefix}sessions
+        WHERE talk_id IN({$id_placeholders})",
+        $session_ids
+    ), OBJECT);
 
-	$speakers = get_posts([
-		'post_type' => 'speaker',
-		'posts_per_page' => -1,
-		'post__in' => $flattened_speaker_ids,
-		'post_status' => 'publish',
-	]);
+    $speakers = get_speakers_by_type([], array_map(function ($session_speaker) {
+        return $session_speaker->speaker_id;
+    }, $session_speakers));
 
-	foreach ($sessions as $session) {
-		$session->speakers = [];
-	}
+    foreach ($session_speakers as $session_speaker) {
+        foreach ($speakers as $speaker) {
+            if ((int)$session_speaker->speaker_id === $speaker->ID) {
+                $session_speaker->speaker = $speaker;
+            }
+        }
+    }
 
-	foreach ($speaker_ids as $session_id => $session_speaker_ids) {
-		foreach ($sessions as $session) {
-			if ($session->ID === $session_id) {
-				$session->speakers = array_values(array_filter($speakers, function($speaker) use ($session_speaker_ids) {
-					if (in_array($speaker->ID, $session_speaker_ids)) {
-						return true;
-					}
-				}));
-				break;
-			}
-		}
-	}
+    foreach ($sessions as $session) {
+        $session->speakers = $session->speakers ?? [];
+        foreach ($session_speakers as $session_speaker) {
+            if ((int)$session_speaker->talk_id === $session->ID) {
+                $session->speakers[] = $session_speaker->speaker;
+            }
+        }
+    }
 
-	return $sessions;
+    return $sessions;
 }
 
 function base_theme_widgets_init() {
@@ -314,6 +316,37 @@ function img_lazify($img) {
 	return $img;
 }
 
+function get_slots($date) {
+	global $wpdb;
+
+	$args = [
+		'post_type' => 'slot',
+		'posts_per_page' => -1,
+		'post_status' => 'publish',
+		'order' => 'ASC',
+		'orderby' => 'meta_value',
+		'meta_type' => 'DATETIME',
+		'meta_key' => 'start',
+		'meta_query' => [
+			'AND',
+			[
+				'key' => 'start',
+				'value' => $date . ' 00:00:00',
+				'compare' => '>=',
+				'type' => 'DATETIME'
+			],
+			[
+				'key' => 'END',
+				'value' => $date . ' 23:59:59',
+				'compare' => '<=',
+				'type' => 'DATETIME'
+			]
+		]
+	];
+
+	return get_posts( $args );
+}
+
 /**
  * Bootstrap menu walker
  */
@@ -328,3 +361,5 @@ require get_template_directory() . '/inc/speaker-post-type.php';
 require get_template_directory() . '/inc/session-post-type.php';
 
 require get_template_directory() . '/inc/invoice-post-type.php';
+
+require get_template_directory() . '/inc/slot-post-type.php';

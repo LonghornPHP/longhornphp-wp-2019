@@ -1,0 +1,168 @@
+{
+    "key": "group_5c4172e032903",
+    "title": "Slot",
+    "fields": [
+        {
+            "key": "field_5c41747ee8f8c",
+            "label": "Start",
+            "name": "start",
+            "type": "date_time_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "F j, Y g:i a",
+            "return_format": "g:i a",
+            "first_day": 1
+        },
+        {
+            "key": "field_5c417491e8f8d",
+            "label": "End",
+            "name": "end",
+            "type": "date_time_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "F j, Y g:i a",
+            "return_format": "g:i a",
+            "first_day": 1
+        },
+        {
+            "key": "field_5c41749be8f8e",
+            "label": "Session Type",
+            "name": "session_type",
+            "type": "radio",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Talks": "Talks",
+                "Talk": "Talk",
+                "Other": "Other"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "default_value": "",
+            "layout": "vertical",
+            "return_format": "value",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_5c4174b0e8f8f",
+            "label": "Session",
+            "name": "session",
+            "type": "relationship",
+            "instructions": "Sessions should be organized in order of room names.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5c41749be8f8e",
+                        "operator": "==",
+                        "value": "Talks"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_5c41749be8f8e",
+                        "operator": "==",
+                        "value": "Talk"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "session"
+            ],
+            "taxonomy": "",
+            "filters": [
+                "search",
+                "taxonomy"
+            ],
+            "elements": "",
+            "min": 1,
+            "max": 3,
+            "return_format": "object"
+        },
+        {
+            "key": "field_5c4174d0e8f90",
+            "label": "Label",
+            "name": "label",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5c41749be8f8e",
+                        "operator": "==",
+                        "value": "Other"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5c417708c42c8",
+            "label": "Room Names",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Tutorial: Bevo, Longhorn, Stadium\r\nNormal: Foxy, Balcones, Stadium",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "slot"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1547796745
+}
