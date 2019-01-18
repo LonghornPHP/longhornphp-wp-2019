@@ -30,7 +30,7 @@
                     <?php endif; ?>
                 </div>
 
-                <p class="card-text"><?php echo apply_filters('post_content', $speaker->post_content); ?></p>
+                <p class="card-text"><?php echo apply_filters('the_content', $speaker->post_content); ?></p>
             </div>
             <?php if (!empty($speaker->sessions)) : ?>
                 <div class="col-12 col-lg-5">

@@ -42,6 +42,6 @@
     </div>
 
     <div class="collapse description" id="<?php echo esc_attr( $session->post_name ); ?>-description">
-        <?php echo apply_filters('post_content', $session->post_content); ?>
+        <?php echo apply_filters('the_content', $session->post_content); ?>
     </div>
 </li>
