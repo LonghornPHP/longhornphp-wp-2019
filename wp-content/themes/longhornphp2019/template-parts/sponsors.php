@@ -9,7 +9,7 @@
             <h3 class="tier-title"><?php echo ucfirst($tier); ?></h3>
             <div class="row justify-content-center">
                 <?php while ($sponsors->have_posts()) : $sponsors->the_post(); ?>
-                    <div class="col-sm-6 col-lg-4 sponsor">
+                    <div class="col-sm-6 col-lg-4 sponsor sponsor-<?php the_ID(); ?>">
                         <?php $link = get_post_meta( get_the_ID(), 'sponsor_link', true ); ?>
                         <?php if ($link) : ?>
                         <a target="_blank" href="<?php echo get_post_meta( get_the_ID(), 'sponsor_link', true ); ?>">
