@@ -57,7 +57,11 @@ get_header();
 					<div class="card">
 						<?php the_post_thumbnail( 'large', ['alt' => get_the_title(get_the_ID()), 'class' => 'card-img-top'] ); ?>
 						<div class="card-body">
-							<h4 class="card-title"><?php the_title(); ?></h4>
+							<h4 class="card-title">
+								<a href="/lineup#<?php echo get_post_field('post_name', get_post()); ?>">
+									<?php the_title(); ?>
+								</a>
+							</h4>
 						</div>
 					</div>
 				</div>
