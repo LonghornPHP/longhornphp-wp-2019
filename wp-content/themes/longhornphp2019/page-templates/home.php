@@ -21,6 +21,15 @@ get_header();
 	</div>
 </div>
 
+<?php if (get_field('registration_embed_code', 'options')) : ?>
+<div class="section-register lazy" id="register" data-src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'large'); ?>">
+	<div class="container">
+		<h2 class="text-center">Buy a Ticket</h2>
+		<?php the_field('registration_embed_code', 'options'); ?>
+	</div>
+</div>
+<?php endif; ?>
+
 <?php
 	$keynoters = new WP_Query([
 		'post_type' => 'speaker',
@@ -80,15 +89,6 @@ get_header();
 		</div>
 	</div>
 </div>
-
-<?php if (get_field('registration_embed_code', 'options')) : ?>
-<div class="section-register lazy" id="register" data-src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'large'); ?>">
-	<div class="container">
-		<h2 class="text-center">Buy a Ticket</h2>
-		<?php the_field('registration_embed_code', 'options'); ?>
-	</div>
-</div>
-<?php endif; ?>
 
 <div
 	class="section-about lazy"
