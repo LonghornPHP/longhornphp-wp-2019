@@ -1,5 +1,9 @@
 <?php $tiers = ['diamond', 'platinum', 'gold', 'silver']; ?>
 
+<div class="text-center">
+    <a href="/register" class="btn btn-secondary mb-5">Register Now</a>
+</div>
+
 <h2 class="text-center mb-4">Sponsors</h2>
 
 <?php foreach ($tiers as $tier) : ?>
