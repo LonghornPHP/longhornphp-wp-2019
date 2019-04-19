@@ -25,7 +25,7 @@ get_header();
 
             endif; ?>
 
-            <div class="day-schedule">
+            <div class="day-schedule" id="tutorial-day">
                 <div class="day-intro">
                     <h2>Thursday, May 2nd</h2>
                     <p><strong>Tutorial Day</strong></p>
@@ -37,7 +37,7 @@ get_header();
                 <?php include get_template_directory() . '/template-parts/schedule-table.php'; ?>
             </div>
 
-            <div class="day-schedule">
+            <div class="day-schedule" id="main-day-1">
                 <div class="day-intro">
                     <h2>Friday, May 3rd</h2>
                     <p><strong>Main Conference – Day 1</strong></p>
@@ -49,7 +49,7 @@ get_header();
                 <?php include get_template_directory() . '/template-parts/schedule-table.php'; ?>
             </div>
 
-            <div class="day-schedule">
+            <div class="day-schedule" id="main-day-2">
                 <div class="day-intro">
                     <h2>Saturday, May 4th</h2>
                     <p><strong>Main Conference – Day 2</strong></p>
