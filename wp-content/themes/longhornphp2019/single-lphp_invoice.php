@@ -9,7 +9,7 @@ $charge = get_field('price');
 if (get_field('include_stripe_fee')) {
     $charge = round(($charge + .3) / 0.971, 2) * 100;
 } else {
-    $charge = (int)$charge * 100;
+    $charge = (int)($charge * 100);
 }
 
 if (count($_POST)):
