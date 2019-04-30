@@ -13,7 +13,7 @@ get_header();
                     <hr>
                 </header>
 
-            endif; ?>
+            <?php endif; ?>
             
             <?php
             $eventId = 7021;
