@@ -1,5 +1,5 @@
 <?php
-/* Template Name: Sessions */
+/* Template Name: Joindin */
 get_header();
 ?>
 
