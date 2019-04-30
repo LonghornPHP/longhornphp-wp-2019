@@ -16,7 +16,7 @@ get_header();
             <?php endif; ?>
             
             <?php
-            $eventId = 7021;
+            $eventId = get_post_meta(get_the_ID(), 'joindin_id', true);
             $comments = json_decode(file_get_contents('https://api.joind.in/v2.1/events/'.$eventId.'/talk_comments?resultsperpage=9999'), true)['comments'];
 
             $users = [];
