@@ -7,7 +7,11 @@
             </tr>
             <tr>
                 <?php foreach ($rooms as $room) : ?>
-                    <th><?php echo $room; ?></th>
+                    <?php if (array_key_exists($room, $room_sponsors)) : ?>
+                        <th style="vertical-align: middle;"><?php echo get_the_post_thumbnail( $room_sponsors[$room] ); ?></th>
+                    <?php else : ?>
+                        <th style="vertical-align: middle;"><?php echo $room; ?></th>
+                    <?php endif; ?>
                 <?php endforeach; ?>
             </tr>
         </thead>

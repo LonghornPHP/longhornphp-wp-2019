@@ -25,6 +25,14 @@ get_header();
 
             endif; ?>
 
+            <?php
+                $room_sponsors_raw = get_field('room_sponsors', 'options');
+                $room_sponsors = [];
+                foreach ($room_sponsors_raw as $room_sponsor) {
+                    $room_sponsors[$room_sponsor['room_name']] = $room_sponsor['sponsor'];
+                }
+            ?>
+
             <div class="day-schedule" id="tutorial-day">
                 <div class="day-intro">
                     <h2>Thursday, May 2nd</h2>
@@ -44,7 +52,7 @@ get_header();
                 </div>
                 <?php
                     $slots = get_slots('2019-05-03');
-                    $rooms = ['Foxy', 'Balcones', 'Stadium'];
+                    $rooms = ['Big Tex', 'Balcones', 'Stadium'];
                 ?>
                 <?php include get_template_directory() . '/template-parts/schedule-table.php'; ?>
             </div>
@@ -56,7 +64,7 @@ get_header();
                 </div>
                 <?php
                     $slots = get_slots('2019-05-04');
-                    $rooms = ['Foxy', 'Balcones', 'Stadium'];
+                    $rooms = ['Big Tex', 'Balcones', 'Stadium'];
                 ?>
                 <?php include get_template_directory() . '/template-parts/schedule-table.php'; ?>
             </div>
