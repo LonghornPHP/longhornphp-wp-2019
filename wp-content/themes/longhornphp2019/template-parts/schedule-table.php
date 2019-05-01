@@ -21,7 +21,14 @@
 
                     <?php if (get_field('session_type', $slot->ID) === 'Other') : ?>
                         <td align="center" colspan="3" style="vertical-align: middle;">
-                            <p><?php the_field('label', $slot->ID); ?></p>
+                            <?php $image = get_field('image', $slot->ID); ?>
+                            <?php if ($image) : ?>
+                                <p><strong><?php the_field('label', $slot->ID); ?></strong></p>
+                                <p><em>Sponsored by:</em></p>
+                                <?php echo wp_get_attachment_image( $image, 'medium' ); ?>
+                            <?php else : ?>
+                                <p><strong><?php the_field('label', $slot->ID); ?></strong></p>
+                            <?php endif; ?>
                         </td>
                     <?php endif; ?>
 
