@@ -86,6 +86,7 @@ function lphp_sponsorship_tier() {
 		'show_in_nav_menus'          => true,
 		'show_tagcloud'              => true,
 		'rewrite'                    => false,
+		'show_in_rest'          	 => true,
 	);
 	register_taxonomy( 'sponsorship_tier', array( 'sponsor' ), $args );
 
