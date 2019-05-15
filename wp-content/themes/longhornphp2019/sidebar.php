@@ -15,7 +15,7 @@
                 <div class="sponsor">
                     <?php $link = get_post_meta( get_the_ID(), 'sponsor_link', true ); ?>
                     <?php if ($link) : ?>
-                    <a target="_blank" href="<?php echo get_post_meta( get_the_ID(), 'sponsor_link', true ); ?>">
+                    <a rel="noopener" target="_blank" href="<?php echo get_post_meta( get_the_ID(), 'sponsor_link', true ); ?>">
                     <?php endif; ?>
                         <strong class="sponsor-title"><?php the_title(); ?></strong>
                         <?php if (has_post_thumbnail() && $tier !== 'kickstarter') : ?>

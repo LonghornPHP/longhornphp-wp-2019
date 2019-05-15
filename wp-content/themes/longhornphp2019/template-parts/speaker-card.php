@@ -17,7 +17,7 @@
                     <?php if ($twitter = get_post_meta( $speaker->ID, 'speaker_twitter', true )) : ?>
                         <p class="twitter-link">
                             <i class="fab fa-twitter-square"></i>&nbsp;
-                            <a target="_blank" href="https://www.twitter.com/<?php echo esc_attr( $twitter ); ?>">
+                            <a rel="noopener" target="_blank" href="https://www.twitter.com/<?php echo esc_attr( $twitter ); ?>">
                                 @<?php echo esc_html( $twitter ); ?>
                             </a>
                         </p>
